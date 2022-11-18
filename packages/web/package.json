@@ -1,0 +1,54 @@
+{
+  "name": "@zip-challenge/web",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "gen": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@apollo/client": "3.6.9",
+    "@zip-challenge/enums": "1.0.0",
+    "graphql": "16.6.0",
+    "lodash": "4.17.21",
+    "moment-timezone": "0.5.37",
+    "react": "18.2.0",
+    "react-datepicker": "4.8.0",
+    "react-dom": "18.2.0",
+    "react-perfect-scrollbar": "1.5.8",
+    "react-router-dom": "6.3.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "2.1.4"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "3.2.1",
+    "@graphql-codegen/cli": "2.12.0",
+    "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-operations": "2.5.3",
+    "@graphql-codegen/typescript-react-apollo": "3.3.3",
+    "@types/lodash": "4.14.184",
+    "@types/node": "16.18.3",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "@types/react-router-dom": "5.3.3",
+    "typescript": "4.9.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

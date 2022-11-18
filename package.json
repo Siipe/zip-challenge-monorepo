@@ -1,0 +1,16 @@
+{
+  "name": "zip-challenge",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/**/*"
+  ],
+  "scripts": {
+    "api": "lerna exec --scope @zip-challenge/api -- npm start",
+    "web": "lerna exec --scope @zip-challenge/web -- npm start",
+    "gen": "lerna exec --scope @zip-challenge/web -- npm run gen"
+  },
+  "devDependencies": {
+    "lerna": "6.0.3"
+  }
+}

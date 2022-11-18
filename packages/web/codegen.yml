@@ -1,0 +1,9 @@
+overwrite: true
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    schema: "http://localhost:5000/graphql" # zip-challenge api
+    documents: "src/graphql/*.ts"
