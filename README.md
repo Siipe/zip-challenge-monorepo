@@ -39,3 +39,11 @@ npm run gen
 # Start frontend (web) React (Port 3000)
 npm run web
 ```
+
+## Tests
+
+```bash
+# e2e tests for the GraphQL API
+npm run test:api
+```
+
