@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import { connect } from 'mongoose';
 
 (async () => {
-  await mongoose.connect('mongodb://admin:12345@localhost:27017', {
+  await connect('mongodb://admin:12345@localhost:27017', {
     dbName: 'zipChallenge',
   });
 })();

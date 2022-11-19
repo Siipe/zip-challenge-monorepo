@@ -13,10 +13,12 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  DateTime: any;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
+  clearSearchHistory: Scalars['Boolean'];
   handleSearch: ZipCodeType;
 };
 
@@ -49,6 +51,7 @@ export type ZipCodeInputType = {
 export type ZipCodeType = {
   __typename?: 'ZipCodeType';
   country: Scalars['String'];
+  createdAt: Scalars['DateTime'];
   id: Scalars['ID'];
   places: Array<PlaceType>;
   postCode: Scalars['String'];
@@ -59,14 +62,19 @@ export type HandleSearchMutationVariables = Exact<{
 }>;
 
 
-export type HandleSearchMutation = { __typename?: 'Mutation', handleSearch: { __typename?: 'ZipCodeType', id: string, country: string, postCode: string, places: Array<{ __typename?: 'PlaceType', name: string, state: string }> } };
+export type HandleSearchMutation = { __typename?: 'Mutation', handleSearch: { __typename?: 'ZipCodeType', id: string, country: string, postCode: string, createdAt: any, places: Array<{ __typename?: 'PlaceType', name: string, state: string }> } };
+
+export type ClearSearchHistoryMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ClearSearchHistoryMutation = { __typename?: 'Mutation', clearSearchHistory: boolean };
 
 export type GetLastSearchesQueryVariables = Exact<{
   limit: Scalars['Float'];
 }>;
 
 
-export type GetLastSearchesQuery = { __typename?: 'Query', getLastSearches: Array<{ __typename?: 'ZipCodeType', id: string, country: string, postCode: string, places: Array<{ __typename?: 'PlaceType', name: string, state: string }> }> };
+export type GetLastSearchesQuery = { __typename?: 'Query', getLastSearches: Array<{ __typename?: 'ZipCodeType', id: string, country: string, postCode: string, createdAt: any, places: Array<{ __typename?: 'PlaceType', name: string, state: string }> }> };
 
 
 export const HandleSearchDocument = gql`
@@ -79,6 +87,7 @@ export const HandleSearchDocument = gql`
       name
       state
     }
+    createdAt
   }
 }
     `;
@@ -108,6 +117,36 @@ export function useHandleSearchMutation(baseOptions?: Apollo.MutationHookOptions
 export type HandleSearchMutationHookResult = ReturnType<typeof useHandleSearchMutation>;
 export type HandleSearchMutationResult = Apollo.MutationResult<HandleSearchMutation>;
 export type HandleSearchMutationOptions = Apollo.BaseMutationOptions<HandleSearchMutation, HandleSearchMutationVariables>;
+export const ClearSearchHistoryDocument = gql`
+    mutation clearSearchHistory {
+  clearSearchHistory
+}
+    `;
+export type ClearSearchHistoryMutationFn = Apollo.MutationFunction<ClearSearchHistoryMutation, ClearSearchHistoryMutationVariables>;
+
+/**
+ * __useClearSearchHistoryMutation__
+ *
+ * To run a mutation, you first call `useClearSearchHistoryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useClearSearchHistoryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [clearSearchHistoryMutation, { data, loading, error }] = useClearSearchHistoryMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useClearSearchHistoryMutation(baseOptions?: Apollo.MutationHookOptions<ClearSearchHistoryMutation, ClearSearchHistoryMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ClearSearchHistoryMutation, ClearSearchHistoryMutationVariables>(ClearSearchHistoryDocument, options);
+      }
+export type ClearSearchHistoryMutationHookResult = ReturnType<typeof useClearSearchHistoryMutation>;
+export type ClearSearchHistoryMutationResult = Apollo.MutationResult<ClearSearchHistoryMutation>;
+export type ClearSearchHistoryMutationOptions = Apollo.BaseMutationOptions<ClearSearchHistoryMutation, ClearSearchHistoryMutationVariables>;
 export const GetLastSearchesDocument = gql`
     query getLastSearches($limit: Float!) {
   getLastSearches(limit: $limit) {
@@ -118,6 +157,7 @@ export const GetLastSearchesDocument = gql`
       name
       state
     }
+    createdAt
   }
 }
     `;

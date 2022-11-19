@@ -23,7 +23,7 @@ async function bootstrap() {
     },
   });
 
-  server.listen({ port: 5000 }, console.log('Up and running...'));
+  server.listen({ port: 5000 }, console.log('\n🚀 Up and running...\n'));
 }
 
 bootstrap();

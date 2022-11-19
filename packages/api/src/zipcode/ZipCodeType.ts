@@ -15,6 +15,9 @@ export class ZipCodeType implements IZipCode {
 
   @Field((_) => [PlaceType])
   places: IPlace[];
+
+  @Field()
+  createdAt: Date;
 }
 
 @ObjectType()

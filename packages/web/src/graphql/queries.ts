@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const getLastSearches = gql`
   query getLastSearches($limit: Float!) {
@@ -10,6 +10,7 @@ export const getLastSearches = gql`
         name
         state
       }
+      createdAt
     }
   }
 `;

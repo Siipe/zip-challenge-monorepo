@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IZipCode } from './IZipCode';
@@ -19,8 +19,8 @@ const ZipCodeSearchSchema = new Schema(
   {
     collection: 'zipCodeSearches',
     timestamps: true,
-    versionKey: false
+    versionKey: false,
   },
 );
 
-export default mongoose.model<IZipCode>('ZipCodeSearch', ZipCodeSearchSchema);
+export default model<IZipCode>('ZipCodeSearch', ZipCodeSearchSchema);

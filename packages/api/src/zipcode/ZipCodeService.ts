@@ -1,19 +1,13 @@
-import { ApolloError } from 'apollo-server';
-
 import { ZippopotamusHttpClient } from '../clients/ZippopotamusHttpClient';
-import { ErrorCode } from '@zip-challenge/enums/ErrorCode';
 import ZipCodeSchema from './ZipCodeSchema';
 import { IZipCode } from './IZipCode';
 import { ZipCodeInputType } from './ZipCodeInputType';
 
 export class ZipCodeService {
-  public async search(input: ZipCodeInputType): Promise<IZipCode> {
-    const response = await ZippopotamusHttpClient.fetch(
-      input.country,
-      input.zipCode,
-    );
+  public async search(input: ZipCodeInputType): Promise<IZipCode | null> {
+    const response = await ZippopotamusHttpClient.fetch(input.country, input.zipCode);
     if (!response) {
-      throw new ApolloError('Address not found', ErrorCode.ADDRESS_NOT_FOUND);
+      return null;
     }
 
     const { country, 'post code': postCode, places } = response;
@@ -26,6 +20,10 @@ export class ZipCodeService {
         state,
       })),
     });
+  }
+
+  public async clearSearchHistory(): Promise<void> {
+    await ZipCodeSchema.remove();
   }
 
   public async getLastSearches(limit: number = 5): Promise<IZipCode[]> {

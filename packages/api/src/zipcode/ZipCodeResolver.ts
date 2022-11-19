@@ -13,9 +13,16 @@ export class ZipCodeResolver {
     this.service = new ZipCodeService();
   }
 
-  @Mutation((_) => ZipCodeType)
-  handleSearch(@Arg('input') input: ZipCodeInputType): Promise<IZipCode> {
+  @Mutation((_) => ZipCodeType, { nullable: true })
+  handleSearch(@Arg('input') input: ZipCodeInputType): Promise<IZipCode | null> {
     return this.service.search(input);
+  }
+
+  @Mutation((_) => Boolean)
+  async clearSearchHistory(): Promise<boolean> {
+    await this.service.clearSearchHistory();
+
+    return true;
   }
 
   @Query((_) => [ZipCodeType])

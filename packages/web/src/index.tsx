@@ -1,17 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { ApolloProvider } from "@apollo/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ApolloProvider } from '@apollo/client';
 
-import App from "App";
-import client from "graphql/client";
+import client from 'graphql/client';
+import { ZipChallengeProvider } from 'contexts/ZipChallengeContext';
+import App from 'App';
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <ZipChallengeProvider>
+        <App />
+      </ZipChallengeProvider>
     </ApolloProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
