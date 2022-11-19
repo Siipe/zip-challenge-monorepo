@@ -1,6 +1,6 @@
 ## Summary
 
-This project is a simple zipcode search API through GraphQL using Node.js, Typescript and React.js under monorepo architecture, powered by [zippopotam.us](https://www.zippopotam.us/#) free API.
+This project is a simple zipcode search API through GraphQL using Node.js, Typescript and React.js under monorepo architecture, with [zippopotam.us](https://www.zippopotam.us/#) free API.
 
 ## Requirements
 
@@ -33,7 +33,7 @@ npm install
 # Start & Watch for API changes (Port 5000)
 npm run api
 
-# OPTIONAL: you only need to run this command if you modify queries, mutations or schema
+# OPTIONAL: you only need to run this command if you modify GraphQL queries, mutations or schema
 npm run gen
 
 # Start frontend (web) React (Port 3000)
