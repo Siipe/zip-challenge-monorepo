@@ -8,7 +8,8 @@
   "scripts": {
     "api": "lerna exec --scope @zip-challenge/api -- npm start",
     "web": "lerna exec --scope @zip-challenge/web -- npm start",
-    "gen": "lerna exec --scope @zip-challenge/web -- npm run gen"
+    "gen": "lerna exec --scope @zip-challenge/web -- npm run gen",
+    "test:api": "lerna exec --scope @zip-challenge/api -- npm run test"
   },
   "devDependencies": {
     "lerna": "6.0.3"

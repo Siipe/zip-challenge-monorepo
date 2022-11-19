@@ -5,11 +5,12 @@ import { buildSchema } from 'type-graphql';
 import './connection';
 import { ZipCodeResolver } from './zipcode/ZipCodeResolver';
 
-async function bootstrap() {
+export const createServer = async () => {
   const schema = await buildSchema({
     resolvers: [ZipCodeResolver],
   });
-  const server = new ApolloServer({
+
+  return new ApolloServer({
     schema,
     formatError: (error) => {
       const {
@@ -22,8 +23,11 @@ async function bootstrap() {
       };
     },
   });
+};
 
+const bootstrap = async () => {
+  const server = await createServer();
   server.listen({ port: 5000 }, console.log('\n🚀 Up and running...\n'));
-}
+};
 
 bootstrap();

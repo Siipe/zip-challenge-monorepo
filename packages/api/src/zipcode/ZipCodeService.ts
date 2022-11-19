@@ -23,7 +23,7 @@ export class ZipCodeService {
   }
 
   public async clearSearchHistory(): Promise<void> {
-    await ZipCodeSchema.remove();
+    await ZipCodeSchema.deleteMany();
   }
 
   public async getLastSearches(limit: number = 5): Promise<IZipCode[]> {

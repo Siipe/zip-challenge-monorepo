@@ -24,8 +24,7 @@ export class ZippopotamusHttpClient {
         return null;
       }
       return result.data;
-    } catch (error) {
-      console.log('An error occurred on fetching the API:', JSON.stringify(error));
+    } catch {
       return null;
     }
   }
